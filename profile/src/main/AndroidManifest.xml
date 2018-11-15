@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wesoft.featuredemo.profile">
+
+    <application tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.wesoft.featuredemo.ProfileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="feature.wesoft.com" />
+                <data android:path="/profile" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

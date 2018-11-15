@@ -1,0 +1,8 @@
+apply plugin: 'com.android.instantapp'
+
+dependencies {
+    implementation project(':base')
+    implementation project(':space')
+    implementation project(':scene')
+    implementation project(':profile')
+}
