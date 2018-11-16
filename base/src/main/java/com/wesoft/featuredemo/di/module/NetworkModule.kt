@@ -24,7 +24,9 @@ import javax.inject.Singleton
  */
 @Module
 class NetworkModule {
-    val DEFAULT_TIMEOUT: Long = 60
+
+    private val DEFAULT_TIMEOUT: Long = 60
+
     @Provides
     @Singleton
     fun provideGson(): Gson = GsonBuilder()

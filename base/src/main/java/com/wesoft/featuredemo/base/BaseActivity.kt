@@ -5,38 +5,38 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.wesoft.wehome.vo.ViewModelTypeResolver
-import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasFragmentInjector
+import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
 /**
  * Created by james.li on 2017/07/20.
  */
-abstract class BaseActivity<VM : BaseViewModel<*>, B : ViewDataBinding> : AppCompatActivity(), HasFragmentInjector {
+abstract class BaseActivity<VM : BaseViewModel<*>, B : ViewDataBinding> : AppCompatActivity(), HasSupportFragmentInjector {
     private val TAG = "BaseActivity"
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
     lateinit var viewModel: VM
 
     lateinit var mBinding: B
 
     // support fragment injection-----start
-    override fun fragmentInjector() = dispatchingAndroidInjector
+    override fun supportFragmentInjector() = dispatchingAndroidInjector
 
     @Inject
-    protected lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<android.app.Fragment>
+    protected lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
     // support fragment injection-----end
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+        androidInject()
         super.onCreate(savedInstanceState)
         val viewModelType = ViewModelTypeResolver.findViewModelType<BaseViewModel<*>>(javaClass)
         if (viewModelType != null) {
@@ -44,11 +44,7 @@ abstract class BaseActivity<VM : BaseViewModel<*>, B : ViewDataBinding> : AppCom
             viewModel = ViewModelProviders.of(this, viewModelFactory).get(viewModelType) as VM
         }
         mBinding = DataBindingUtil.setContentView(this, getLayoutId())
-
-        viewModel.isLoading.observe(this, Observer { isLoading ->
-
-        })
-
+        setupViews()
     }
 
 
@@ -64,5 +60,5 @@ abstract class BaseActivity<VM : BaseViewModel<*>, B : ViewDataBinding> : AppCom
 
     abstract fun setupViews()
 
-    abstract fun observeData()
+    abstract fun androidInject()
 }

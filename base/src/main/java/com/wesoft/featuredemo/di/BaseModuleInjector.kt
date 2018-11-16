@@ -5,6 +5,7 @@ import android.app.Service
 import android.content.BroadcastReceiver
 import android.content.ContentProvider
 import android.content.Context
+import androidx.fragment.app.Fragment
 import com.wesoft.featuredemo.App
 import com.wesoft.featuredemo.di.component.DaggerComponent
 import dagger.android.*
@@ -15,7 +16,7 @@ import javax.inject.Inject
  * Cf. [dagger.android.DaggerApplication]
  */
 abstract class BaseModuleInjector : HasActivityInjector,
-        HasFragmentInjector,
+        //HasFragmentInjector,
         HasSupportFragmentInjector,
         HasServiceInjector,
         HasBroadcastReceiverInjector,
@@ -23,8 +24,8 @@ abstract class BaseModuleInjector : HasActivityInjector,
 
     @Inject lateinit var activityInjector: DispatchingAndroidInjector<Activity>
     @Inject lateinit var broadcastReceiverInjector: DispatchingAndroidInjector<BroadcastReceiver>
-    @Inject lateinit var fragmentInjector: DispatchingAndroidInjector<android.app.Fragment>
-    //@Inject lateinit var fragmentSupportInject: DispatchingAndroidInjector<SupportFragment>
+    @Inject lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+    @Inject lateinit var fragmentSupportInject: DispatchingAndroidInjector<Fragment>
     @Inject lateinit var serviceInjector: DispatchingAndroidInjector<Service>
     @Inject lateinit var contentProviderInjector: DispatchingAndroidInjector<ContentProvider>
 
@@ -42,7 +43,7 @@ abstract class BaseModuleInjector : HasActivityInjector,
             //is SupportFragment -> fragmentSupportInject.inject(dependerContext)
             is Service -> serviceInjector.inject(dependerContext)
             is BroadcastReceiver -> broadcastReceiverInjector.inject(dependerContext)
-            is android.app.Fragment -> fragmentInjector.inject(dependerContext)
+            is Fragment -> fragmentInjector.inject(dependerContext)
             is ContentProvider -> contentProviderInjector.inject(dependerContext)
         }
     }
@@ -57,7 +58,7 @@ abstract class BaseModuleInjector : HasActivityInjector,
             //is SupportFragment -> fragmentSupportInject.inject(dependerContext)
             is Service -> serviceInjector.inject(dependerContext)
             is BroadcastReceiver -> broadcastReceiverInjector.inject(dependerContext)
-            is android.app.Fragment -> fragmentInjector.inject(dependerContext)
+            is Fragment -> fragmentInjector.inject(dependerContext)
             is ContentProvider -> contentProviderInjector.inject(dependerContext)
         }
     }
@@ -100,7 +101,7 @@ abstract class BaseModuleInjector : HasActivityInjector,
 
     override fun activityInjector(): DispatchingAndroidInjector<Activity> = activityInjector
 
-    override fun fragmentInjector(): DispatchingAndroidInjector<android.app.Fragment> = fragmentInjector
+    //override fun fragmentInjector(): DispatchingAndroidInjector<Fragment> = fragmentInjector
 
     override fun broadcastReceiverInjector(): DispatchingAndroidInjector<BroadcastReceiver> = broadcastReceiverInjector
 
@@ -108,5 +109,5 @@ abstract class BaseModuleInjector : HasActivityInjector,
 
     override fun contentProviderInjector(): DispatchingAndroidInjector<ContentProvider> = contentProviderInjector
 
-    //override fun supportFragmentInjector(): DispatchingAndroidInjector<SupportFragment> = fragmentSupportInject
+    override fun supportFragmentInjector(): DispatchingAndroidInjector<Fragment> = fragmentSupportInject
 }

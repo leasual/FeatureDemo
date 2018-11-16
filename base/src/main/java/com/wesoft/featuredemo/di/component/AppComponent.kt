@@ -2,6 +2,7 @@ package com.wesoft.featuredemo.di.component
 
 import com.wesoft.featuredemo.App
 import com.wesoft.featuredemo.di.module.AppModule
+import com.wesoft.featuredemo.di.module.BaseViewModelModule
 import com.wesoft.featuredemo.di.module.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
@@ -13,10 +14,11 @@ import javax.inject.Singleton
 @Component(modules = [
     AndroidSupportInjectionModule::class,
     AppModule::class,
-    NetworkModule::class
+    NetworkModule::class,
+    BaseViewModelModule::class
 ])
 
-interface AppComponent : AndroidInjector<App>, DaggerComponent{
+interface AppComponent : AndroidInjector<App>, DaggerComponent, AppComponentProviders{
 
     override fun inject(instance: App)
 

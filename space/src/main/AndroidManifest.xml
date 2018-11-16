@@ -4,7 +4,7 @@
     package="com.wesoft.featuredemo.space">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.wesoft.featuredemo.SpaceActivity">
+        <activity android:name="com.wesoft.featuredemo.space.SpaceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -4,7 +4,7 @@
     package="com.wesoft.featuredemo.profile">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.wesoft.featuredemo.ProfileActivity">
+        <activity android:name="com.wesoft.featuredemo.profile.ProfileActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -15,6 +15,19 @@
                 <data android:scheme="https" />
                 <data android:host="feature.wesoft.com" />
                 <data android:path="/profile" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.wesoft.featuredemo.profile.EditProfileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="feature.wesoft.com" />
+                <data android:path="/profile/edit" />
             </intent-filter>
         </activity>
     </application>
