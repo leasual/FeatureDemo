@@ -18,7 +18,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        buildConfigField "String", "BASE_URL", "\"http://gank.io/api/\""
+        buildConfigField "String", "BASE_URL", "\"https://gank.io/api/\""
     }
     buildTypes {
         release {
