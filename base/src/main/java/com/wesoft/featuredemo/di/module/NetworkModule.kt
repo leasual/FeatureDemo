@@ -4,9 +4,9 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.wesoft.featuredemo.App
-import com.wesoft.featuredemo.BuildConfig
 import com.wesoft.featuredemo.api.APIService
 import com.wesoft.featuredemo.api.NullStringToEmptyAdapterFactory
+import com.wesoft.featuredemo.base.BuildConfig
 
 import dagger.Module
 import dagger.Provides
