@@ -6,7 +6,7 @@
 
 #### [构建instant app](https://codelabs.developers.google.com/codelabs/android-instant-apps/index.html#0)
 
-#### [构建multi-feature app](https://codelabs.developers.google.com/codelabs/android-instant-apps/index.html#0)
+#### [构建multi-feature app](https://codelabs.developers.google.com/codelabs/android-multi-feature-instant-app/#0)
 
 #### 框架设计
 
